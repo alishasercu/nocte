@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=6">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
+<script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
 </head>
 <body>
 
@@ -42,37 +43,37 @@
 
   <!-- 2. VERHAAL -->
   <section class="story" id="story" aria-labelledby="story-title">
-    <div class="story-text">
+    <div class="reveal story-text">
       <p class="eyebrow">The story</p>
       <h2 id="story-title"><em>Close</em> to your skin, long after midnight.</h2>
       <p>NOCTE comes from <i>nocte</i>, Latin for "by night". It's a perfume for the moment the music gets louder and the room gets warmer.</p>
       <p>Sweet, intense and close to your skin. You notice it when you walk in, and it's still there when the lights come on. No rules about when or how. The night is yours.</p>
     </div>
-    <figure class="story-visual">
+    <figure class="reveal story-visual">
       <img src="assets/img/story.jpg" alt="A woman sprays perfume on her neck on a warm, crowded dance floor at night" loading="lazy" width="733" height="1035">
     </figure>
   </section>
 
   <!-- 3. GEUREN -->
   <section class="scents" id="scents" aria-labelledby="scents-title">
-    <div class="section-head">
+    <div class="reveal section-head">
       <p class="eyebrow">The scents</p>
       <h2 id="scents-title">Light to dark, <em>sweet</em> all the way.</h2>
     </div>
     <div class="scent-grid">
-      <article class="scent" id="sage">
+      <article class="scent reveal" id="sage">
         <img src="assets/img/sage.jpg" alt="NOCTE Sage perfume bottle against a warm, blurred club light" loading="lazy" width="1024" height="1024">
         <h3>Sage</h3>
         <p class="notes">Before midnight</p>
         <p>Bright on your skin, for the nights you don't sit down.</p>
       </article>
-      <article class="scent" id="amber">
+      <article class="scent reveal" id="amber">
         <img src="assets/img/amber.jpg" alt="NOCTE Amber perfume bottle in warm amber light" loading="lazy" width="1024" height="1024">
         <h3>Amber</h3>
         <p class="notes">When the room heats up</p>
         <p>Wakes up when the room gets hot and gets sweeter with every song.</p>
       </article>
-      <article class="scent" id="noir">
+      <article class="scent reveal" id="noir">
         <img src="assets/img/noir.jpg" alt="NOCTE Noir perfume bottle on a dark background with a golden glow" loading="lazy" width="1024" height="1024">
         <h3>Noir</h3>
         <p class="notes">Until the lights come on</p>
@@ -83,7 +84,7 @@
 
   <!-- 4. CTA + FORMULIER -->
   <section class="join" id="join" aria-labelledby="join-title">
-    <div class="join-inner">
+    <div class="reveal join-inner">
       <img class="join-logo" src="assets/img/logo-amber.svg" alt="" width="96" height="22">
       <h2 id="join-title">Be <em>first.</em></h2>
       <p>Leave your name and email. You'll get launch news, the scent guide and first access before anyone else.</p>
@@ -103,6 +104,18 @@
   <p>Sage · Amber · Noir</p>
   <p class="small">NOCTE is a fictional brand, created for a student project at Arteveldehogeschool. Your name and email are only used to send NOCTE emails. You can unsubscribe at any time.</p>
 </footer>
+
+<script>
+  // Secties zachtjes laten verschijnen bij het scrollen
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('is-visible'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
 
 </body>
 </html>
