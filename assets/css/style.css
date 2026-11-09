@@ -98,7 +98,14 @@ h1 em, h2 em { font-style: italic; color: var(--amber-500); }
   display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: center;
 }
 .story-text p:not(.eyebrow) { max-width: 32em; color: var(--cream-700); }
-.story-visual { margin: 0; position: relative; border-radius: 3px; overflow: hidden; aspect-ratio: 4 / 5; }
+.story-visual {
+  margin: 0; position: relative; overflow: hidden; aspect-ratio: 4 / 5;
+  /* zachte rand, zoals bij de geurkaarten */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent), linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+  -webkit-mask-composite: source-in;
+          mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent), linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+          mask-composite: intersect;
+}
 .story-visual img { width: 100%; height: 100%; object-fit: cover; }
 /* warme gloed over de foto, in de merkkleuren */
 .story-visual::after {
@@ -131,9 +138,9 @@ h1 em, h2 em { font-style: italic; color: var(--amber-500); }
 .join-inner { max-width: 640px; margin: 0 auto; text-align: center; }
 .join-logo { margin: 0 auto 2rem; width: 96px; height: auto; }
 .join h2 em { color: var(--amber-300); }
-.join p { color: var(--cream-100); }
+.join p { color: var(--cream-500); }
 .form-slot { margin-top: 2.5rem; text-align: left; }
-.form-pending { text-align: center; font-style: italic; opacity: .8; }
+.form-pending { text-align: center; font-style: italic; color: var(--cream-500); }
 
 /* Footer */
 .site-footer { padding: 56px var(--gutter); text-align: center; color: var(--cream-700); font-size: .9rem; }
